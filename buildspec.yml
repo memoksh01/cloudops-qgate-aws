@@ -1,1 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing Sonar Scanner"
+      - npm install -g sonar-scanner
+
+  build:
+    commands:
+      - echo "Running SonarCloud Quality Scan"
+      - sonar-scanner \
+        -Dsonar.projectKey=YOUR_PROJECT_KEY \
+        -Dsonar.organization=YOUR_ORG_NAME \
+        -Dsonar.host.url=https://sonarcloud.io \
+        -Dsonar.login=$SONAR_TOKEN
+
+artifacts:
+  files:
+    - '**/*'
 
